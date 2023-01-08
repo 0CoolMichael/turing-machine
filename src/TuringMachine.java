@@ -19,38 +19,38 @@ public class TuringMachine {
 
 
 
-        public void processInput() {
+    public void processInput() {
             // Set the current state to the first state in the list
-            int currentState = 0;
-            this.pointer = 1;
+        int currentState = 0;
+        this.pointer = 1;
 
             // Loop until an accept or reject state is reached
-            while (true) {
+        while (true) {
                 // Get the current character
-                char currentChar = this.input.charAt(this.pointer);
+            char currentChar = this.input.charAt(this.pointer);
 
                 // Look up the next state, character to write, and direction to move the pointer
                 // in the state transition table
-                int nextState = -1;
-                char nextChar = ' ';
-                char direction = ' ';
-                for (char[] operation : this.operations) {
-                    if (Character.getNumericValue(operation[0]) == currentState
-                            && operation[1] == currentChar) {
-                        nextState = Character.getNumericValue(operation[4]);
-                        nextChar = operation[3];
-                        direction = operation[2];
-                        // Change the current state to the next state
-                        currentState = nextState;
-// Update the input string
-                        StringBuilder sb = new StringBuilder(this.input);
-                        sb.setCharAt(this.pointer , nextChar);
-                        this.input = sb.toString();
+            int nextState = -1;
+            char nextChar = ' ';
+            char direction = ' ';
+            for (char[] operation : this.operations) {
+                if (Character.getNumericValue(operation[0]) == currentState && operation[1] == currentChar) {
+                    nextState = Character.getNumericValue(operation[4]);
+                    nextChar = operation[3];
+                    direction = operation[2];
+                    // Change the current state to the next state
+                    currentState = nextState;
+                    // Update the input string
+                    StringBuilder sb = new StringBuilder(this.input);
+                    sb.setCharAt(this.pointer , nextChar);
+                    this.input = sb.toString();
 // Move the pointer in the specified direction
-                        if (direction == 'L') {
-                            this.pointer--;
-                        } else if (direction == 'R') {
-                            this.pointer++;
+                    if (direction == 'L') {
+                        this.pointer--;
+                        }
+                    else if (direction == 'R') {
+                        this.pointer++;
                         }
                         break;
                     }
@@ -69,7 +69,8 @@ public class TuringMachine {
                     // Current state is an accept state
                     System.out.println("Accepted");
                     break;
-                } else if (currentState == statenumber - 2) {
+                }
+                else if (currentState == statenumber - 2) {
                     // Current state is a reject state
                     System.out.println("Rejected");
                     break;
