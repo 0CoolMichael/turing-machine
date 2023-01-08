@@ -28,7 +28,7 @@ public class test {
         TuringMachine tm = new TuringMachine(9,operations);
 
 // Set the input string
-        tm.input=" abccc ";
+        tm.input=" aabbbcccccc ";
 
 
 // Process the input string

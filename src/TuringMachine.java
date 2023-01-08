@@ -35,8 +35,8 @@ public class TuringMachine {
             char nextChar = ' ';
             char direction = ' ';
             for (char[] operation : this.operations) {
-                if (Character.getNumericValue(operation[0]) == currentState && operation[1] == currentChar) {
-                    nextState = Character.getNumericValue(operation[4]);
+                if ((operation[0]-'0') == currentState && operation[1] == currentChar) {
+                    nextState = operation[4]-'0';
                     nextChar = operation[3];
                     direction = operation[2];
                     // Change the current state to the next state
